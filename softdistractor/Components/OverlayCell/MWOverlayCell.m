@@ -24,7 +24,6 @@
     self.gradientMask.frame = self.bounds;
     CGFloat gradientSize = 120 / self.bounds.size.width;
     UIColor *gradient = [UIColor colorWithWhite:1.0f alpha:0.2f];
-    UIView *superview = self.superview;
 
     self.animation = [CABasicAnimation animationWithKeyPath:@"locations"];
     
@@ -35,12 +34,10 @@
                                     [NSNumber numberWithFloat:(gradientSize / 2)],
                                     [NSNumber numberWithFloat:gradientSize]];
     
-    self.gradientMask.startPoint = CGPointMake(0 - (gradientSize * 2), .5);
-    self.gradientMask.endPoint = CGPointMake(1 + gradientSize, .5);
+    self.gradientMask.startPoint = CGPointMake(0 - (gradientSize * 2), 0.5f);
+    self.gradientMask.endPoint = CGPointMake(1 + gradientSize, 0.5f);
     
-    [self removeFromSuperview];
     self.layer.mask = self.gradientMask;
-    [superview addSubview:self];
     
     self.animation.fromValue = @[[NSNumber numberWithFloat:0.0f],
                                  [NSNumber numberWithFloat:(gradientSize / 2)],
